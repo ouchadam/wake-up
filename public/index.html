@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Wake up</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+      var onWake;
+      var onShutdown;
+
+      $.getJSON("/public/config.json", function(config) {
+        var location = config.location
+
+        onWake = function() {
+          $.get(location + "/wake");
+        }
+
+        onShutdown = function() {
+          $.get(location + "/shutdown");
+        }
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <h1>Wake up</h1>
+
+    <button onclick="onWake()">Wake up, yo</button>
+    <button onclick="onShutdown()">Shutdown</button>
+
+  </body>
+
+</html>

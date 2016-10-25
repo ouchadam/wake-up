@@ -1,0 +1,25 @@
+{
+  "name": "wake-up",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouchadam/wake-up.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouchadam/wake-up/issues"
+  },
+  "homepage": "https://github.com/ouchadam/wake-up#readme",
+  "dependencies": {
+    "basic-auth-connect": "^1.0.0",
+    "express": "^4.14.0",
+    "request": "^2.75.0",
+    "wake_on_lan": "0.0.4"
+  }
+}
