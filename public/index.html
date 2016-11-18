@@ -10,7 +10,7 @@
       var onWake;
       var onShutdown;
 
-      $.getJSON("/public/config.json", function(config) {
+      $.getJSON("public/config.json", function(config) {
         var location = config.location
 
         onWake = function() {
