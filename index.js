@@ -3,6 +3,7 @@ const app = express();
 const httpServer = require('http').Server(app);
 const wol = require('wake_on_lan');
 const http = require('request');
+const config = require('./config');
 
 applyBasicAuth();
 
@@ -23,14 +24,13 @@ app.get('/shutdown', function(req, res){
   });
 });
 
-httpServer.listen(3001, function(){
-  console.log('listening on *:3001');
+httpServer.listen(config.server.port, function(){
+  console.log(`listening on *:${config.server.port}`);
 });
 
 function applyBasicAuth() {
-  const secrets = require('./secrets');
-  if (secrets) {
+  if (config.auth) {
     const basicAuth = require('basic-auth-connect');
-    app.use(basicAuth(secrets.auth.username, secrets.auth.password));
+    app.use(basicAuth(config.auth.username, config.auth.password));
   }
 }
