@@ -5,11 +5,11 @@ const wol = require('wake_on_lan');
 const http = require('request');
 const config = require('./config');
 
-applyBasicAuth();
+const auth = applyBasicAuth();
 
 app.use("/public", express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
+app.get('/', auth, function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -29,8 +29,6 @@ httpServer.listen(config.server.port, function(){
 });
 
 function applyBasicAuth() {
-  if (config.auth) {
-    const basicAuth = require('basic-auth-connect');
-    app.use(basicAuth(config.auth.username, config.auth.password));
-  }
+  const basicAuth = require('basic-auth-connect');
+  return basicAuth(config.auth.username, config.auth.password);
 }
